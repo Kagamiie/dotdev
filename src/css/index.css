@@ -7,23 +7,6 @@
     --color: rgba(255, 255, 255, 0.2);
 }
 
-/* Mobile-first approach - default styles for mobile */
-@media (max-width: 480px) {
-    :root {
-        --img-size: 100%;
-        --img-height: 200px;
-        --gap: 2em;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    :root {
-        --img-size: 450px;
-        --img-height: 220px;
-        --gap: 3em;
-    }
-}
-
 /* RESET */
 * {
     box-sizing: border-box;
@@ -71,13 +54,6 @@ body {
     position: relative;
 }
 
-@media (max-width: 480px) {
-    .primary-container {
-        margin: 1rem 0;
-        max-width: 100%;
-    }
-}
-
 hr {
     border: 1px solid #404044;
     margin: 10px 0;
@@ -109,13 +85,6 @@ svg {
     z-index: 10;
 }
 
-@media (max-width: 480px) {
-    .current-path {
-        padding: 3px 15px;
-        font-size: 12px;
-    }
-}
-
 /* IMAGE */
 img {
     border-bottom: 2px solid #404044;
@@ -136,7 +105,6 @@ img {
     top: 50%;
     left: 20px;
     transform: translate(-90%, -50%);
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,27 +118,6 @@ img {
     z-index: 5;
 }
 
-@media (max-width: 768px) {
-    .main-navigation {
-        left: 10px;
-        gap: 8px;
-        padding: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-navigation {
-        left: 5px;
-        gap: 5px;
-        padding: 4px;
-    }
-    
-    .main-navigation svg {
-        width: 16px;
-        height: 16px;
-    }
-}
-
 .main-navigation > a {
     transition: background-color 0.3s ease;
 }
@@ -178,12 +125,6 @@ img {
 .main-navigation > a:hover {
     background-color: #723bf2;
 }
-
-/* @media (max-width: 480px) {
-    .main-navigation > a {
-        padding: 6px;
-    }
-} */
 
 /* ABOUT */
 .profile-info {
@@ -209,34 +150,6 @@ img {
     color: rgb(87, 87, 87) !important;
 }
 
-@media (max-width: 768px) {
-    .profile-info p,
-    .profile-info h1,
-    .profile-info .website-link {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile-info p,
-    .profile-info h1,
-    .profile-info .website-link {
-        padding: 10px;
-    }
-    
-    .profile-info h1 {
-        font-size: 1.5rem;
-    }
-    
-    .profile-info .website-link {
-        font-size: 0.9rem;
-    }
-    
-    .profile-info p {
-        font-size: 0.9rem;
-    }
-}
-
 /* PROJECTS & LINKS */
 .project-item {
     display: flex;
@@ -244,13 +157,6 @@ img {
     border-bottom: 2px solid #404044;
     padding: 10px;
     gap: 5px;
-}
-
-@media (min-width: 769px) {
-    .project-item {
-        flex-direction: row;
-        gap: 5px;
-    }
 }
 
 a {
@@ -291,21 +197,12 @@ a {
     flex-direction: column;
     gap: 4px;
     background: #2b2b2b;
-
     border: 1px solid rgba(107, 114, 128, 0.4);
     transition: all 0.1s ease-in-out;
     text-decoration: none;
     color: inherit;
     width: 100%;
     max-width: 427px;
-    
-}
-
-@media (min-width: 769px) {
-    .card {
-        width: 262.5px;
-        max-width: none;
-    }
 }
 
 .card:hover {
@@ -335,12 +232,6 @@ a {
     text-align: left;
 }
 
-@media (max-width: 480px) {
-    .card-title {
-        font-size: 14px;
-    }
-}
-
 .download-info {
     display: flex;
     align-items: center;
@@ -362,12 +253,6 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-}
-
-@media (max-width: 480px) {
-    .card-description {
-        font-size: 12px;
-    }
 }
 
 .card-footer {
@@ -402,7 +287,6 @@ a {
     height: 36px;
     width: 100%;
     max-width: fit-content;
-    
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.025em;
@@ -410,13 +294,10 @@ a {
     text-decoration: none;
     white-space: nowrap;
     user-select: none;
-    
     background-color: #2563eb;
     border: 1px solid transparent;
     border-radius: 4px;
-    
     box-shadow: inset 0 -2px #053794, 0 1px 3px #6a758800;
-    
     transition: all 0.075s ease;
     cursor: pointer;
 }
@@ -458,16 +339,6 @@ a {
     border-radius: 3px;
 }
 
-@media (min-width: 640px) {
-    .download-button {
-        width: fit-content;
-    }
-    
-    .kbd {
-        display: flex;
-    }
-}
-
 /* SEARCH */
 .search-section {
     position: relative;
@@ -491,24 +362,12 @@ a {
     margin-bottom: 8px;
 }
 
-@media (max-width: 480px) {
-    .helper-text {
-        font-size: 12px;
-    }
-}
-
 .terminal-line {
     display: flex;
     width: 100%;
     flex-direction: column;
     border-bottom: 2px solid #404044;
     padding: 10px 20px;
-}
-
-@media (max-width: 480px) {
-    .terminal-line {
-        padding: 10px;
-    }
 }
 
 .input-area {
@@ -523,12 +382,6 @@ a {
     flex-shrink: 0;
 }
 
-@media (max-width: 480px) {
-    .terminal-prompt {
-        font-size: 18px;
-    }
-}
-
 input {
     background: transparent;
     border: none;
@@ -539,12 +392,6 @@ input {
     min-width: 0;
 }
 
-@media (max-width: 480px) {
-    input {
-        font-size: 12px;
-    }
-}
-
 .terminal-output {
     margin-left: auto;
     font-size: 12px;
@@ -552,23 +399,11 @@ input {
     flex-shrink: 0;
 }
 
-@media (max-width: 480px) {
-    .terminal-output {
-        font-size: 10px;
-    }
-}
-
 /* MUSIC PLAYER */
 .music-section {
     margin-top: 5px;
     padding: 10px 20px;
     position: relative;
-}
-
-@media (max-width: 480px) {
-    .music-section {
-        padding: 10px;
-    }
 }
 
 .audio-controls {
@@ -582,13 +417,6 @@ input {
     color: white;
     font-weight: bold;
     z-index: 5;
-}
-
-@media (max-width: 480px) {
-    .audio-controls {
-        padding: 10px 20px;
-        bottom: -15px;
-    }
 }
 
 #track-selector {
@@ -607,12 +435,6 @@ input {
     user-select: none;
     fill: var(--color);
     cursor: pointer;
-}
-
-@media (max-width: 480px) {
-    .player-container {
-        --size: 25px;
-    }
 }
 
 .player-container .play-button,
@@ -695,7 +517,7 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 0;
 }
 
-/* FOOTER - Static positioning that doesn't overlap content */
+/* FOOTER */
 .page-footer {
     color: #d1d5db;
     text-align: center;
@@ -703,50 +525,8 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 1;
     position: relative;
     margin-top: clamp(2rem, 5vw, 4rem);
-    
-    /* Ensure footer stays at bottom without overlapping */
     clear: both;
-    
-    /* Add smooth transitions for responsive changes */
     transition: all 0.3s ease;
-}
-
-/* All screen sizes - keep footer at bottom of content */
-@media (min-width: 1024px) {
-    .page-footer {
-        margin-top: clamp(3rem, 6vw, 5rem);
-        font-size: clamp(11px, 1.2vw, 14px);
-    }
-}
-
-@media (min-height: 900px ) {
-    .page-footer {
-        position: fixed;
-        bottom: 2rem;
-        /* margin-top: clamp(3rem, 6vw, 5rem); */
-        /* font-size: clamp(11px, 1.2vw, 14px); */
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-    .page-footer {
-        margin-top: clamp(2.5rem, 5vw, 4rem);
-        font-size: clamp(12px, 1.5vw, 13px);
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .page-footer {
-        margin-top: clamp(2rem, 4vw, 3rem);
-        font-size: clamp(11px, 2vw, 13px);
-    }
-}
-
-@media (max-width: 480px) {
-    .page-footer {
-        margin-top: clamp(1.5rem, 6vw, 2.5rem);
-        font-size: clamp(10px, 3vw, 12px);
-    }
 }
 
 .page-footer .footer-container {
@@ -755,50 +535,10 @@ input[type="range"]::-webkit-slider-thumb {
     color: rgb(98, 99, 100);
     cursor: auto;
     padding: 0 1rem;
-    
-    /* Make text size responsive to zoom */
     font-size: clamp(10px, 1.2vw, 14px);
-    
-    /* Add subtle animation */
     transition: all 0.2s ease;
 }
 
-/* Zoom-specific adjustments using viewport units */
-@media (min-width: 1200px) {
-    .page-footer .footer-container {
-        font-size: clamp(12px, 1vw, 16px);
-        padding: 0 clamp(1rem, 2vw, 2rem);
-    }
-}
-
-@media (min-width: 1600px) {
-    .page-footer .footer-container {
-        font-size: clamp(13px, 0.8vw, 18px);
-    }
-}
-
-/* Additional responsive behavior for extreme zooms */
-@media (max-width: 320px) {
-    .page-footer .footer-container {
-        font-size: 9px;
-        padding: 0 0.5rem;
-    }
-}
-
-/* High DPI / Retina display adjustments */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .page-footer .footer-container {
-        font-weight: 300;
-        letter-spacing: 0.01em;
-    }
-}
-
-/* Print styles - hide footer when printing */
-@media print {
-    .page-footer {
-        display: none;
-    }
-}
 /* SELECTION STYLES */
 ::selection {
     background-color: #723bf256;
@@ -810,41 +550,13 @@ input[type="range"]::-webkit-slider-thumb {
     color: white;
 }
 
-/* RESPONSIVE IMPROVEMENTS */
-@media (max-width: 768px) {
-    body {
-        padding: 0.5rem;
-    }
-    
-    .primary-container {
-        margin: 1rem 0;
-    }
+/* SELECTION STYLES */
+::selection {
+    background-color: #723bf256;
+    color: white;
 }
 
-@media (max-width: 480px) {
-    body {
-        padding: 0.25rem;
-        min-height: 100vh;
-    }
-    
-    .primary-container {
-        margin: 0.5rem 0;
-    }
-    
-    /* Ensure touch targets are large enough */
-    .card, .main-navigation a {
-        min-height: 44px;
-    }
-    
-    /* Prevent horizontal scrolling */
-    html, body {
-        overflow-x: hidden;
-    }
-    
-    /* Improve text readability */
-    .card-title, .card-description, .author-name {
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
-    }
+::-moz-selection {
+    background-color: #723bf256;
+    color: white;
 }
