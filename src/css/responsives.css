@@ -19,6 +19,13 @@
         --gap: 2em;
     }
 
+    .pause-button.btn,
+    .play-button.btn{
+        width: 14px!important;
+        height: 14px!important;
+    }
+
+
     /* Base styles */
     body {
         padding: 0.25rem;
@@ -43,9 +50,12 @@
         padding: 4px;
     }
 
-    .main-navigation svg {
-        width: 16px;
-        height: 16px;
+    .main-navigation svg{
+        transform: scale(0.8);
+    }
+
+    .main-navigation{
+        transform: translate(-70%, -50%);
     }
 
     /* Header */
@@ -158,6 +168,14 @@
         padding: 5px;
     }
 
+    .main-navigation svg{
+        transform: scale(0.8);
+    }
+
+    .main-navigation{
+        transform: translate(-85%, -50%);
+    }
+
     /* Footer */
     .page-footer {
         margin-top: clamp(2rem, 4vw, 3rem);
@@ -232,7 +250,7 @@
 }
 
 /* TALL SCREENS (min-height: 900px) */
-@media (min-height: 900px) {
+@media (min-height: 1050px) {
     .page-footer {
         position: fixed;
         bottom: 2rem;

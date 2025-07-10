@@ -97,7 +97,7 @@ const Navigation = {
 
                 // gere la bar url
                 const page = filePath.split("/").pop().replace(".html", "");
-                history.pushState({ page: filePath }, "", `${page}`);
+                history.pushState({ page: filePath }, "", `#${page}`);
             })
         );
 
