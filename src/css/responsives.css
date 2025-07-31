@@ -46,8 +46,8 @@
     /* Navigation */
     .main-navigation {
         left: 5px;
-        gap: 5px;
-        padding: 4px;
+        /* gap: 5px; */
+        /* padding: 4px; */
     }
 
     .main-navigation svg{
@@ -164,7 +164,7 @@
     /* Navigation */
     .main-navigation {
         left: 10px;
-        gap: 8px;
+        /* gap: 8px; */
         padding: 5px;
     }
 

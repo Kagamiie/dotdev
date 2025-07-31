@@ -94,9 +94,14 @@ img {
     display: block;
 }
 
+.main-navigation>.navigation-link+.navigation-link {
+    border-top: 2px solid #404044;
+}
+
 .navigation-link {
-    width: 18px!important;
-    height: 18px!important;
+    padding: 5px;
+    height: 30px;
+    width: 27px;
 }
 
 /* NAVIGATION */
@@ -109,8 +114,8 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    padding: 7px;
+    /* gap: 10px; */
+    /* padding: 7px; */
     background-color: #1f1f1f;
     border: 2px solid #404044;
     color: white;
