@@ -229,8 +229,9 @@
 /* LARGE DESKTOP (min-width: 1024px) */
 @media (min-width: 1024px) {
     .page-footer {
-        margin-top: clamp(3rem, 6vw, 5rem);
-        font-size: clamp(11px, 1.2vw, 14px);
+        position: relative;
+        /* position: fixed; */
+        bottom: .5rem;
     }
 }
 
