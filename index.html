@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/responsives.css">
+    <script src="src/js/app.js"></script>
+    <title>root@ks:/$</title>
+</head>
+
+<body class="background">
+    <main class="primary-container" id="main-page">
+        <div class="top-section">
+            <img src="src/media/img/575834475df5921f9b2cae73e86ab586.jpg" alt="">
+            <div class="current-path" id="current-path"><span>~</span></div>
+
+            <nav class="main-navigation">
+                <a href="#home" class="navigation-link active" data-page="src/pages/home/home.html">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                        ></path>
+                    </svg>
+                </a>
+                <a href="#about" class="navigation-link" data-page="src/pages/about/about.html">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                        d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z"
+                        ></path>
+                        <path
+                        d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z"
+                        ></path>
+                    </svg>
+                </a>
+                <a href="#contact" class="navigation-link" data-page="src/pages/contact/contact.html">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </a>
+            </nav> 
+            
+        </div>
+        
+        <div id="content-area">
+            <!--  -->
+        </div>
+        <div class="search-section">
+            <!-- <div class="terminal-container">
+                <div class="terminal-line">
+                    <p class="helper-text">Get started by typing <code>help</code> command below</p>
+                    <div class="input-area">
+                        <span class="terminal-prompt">&gt;</span>
+                        <input type="text" id="user-command" placeholder="Type command..." onkeydown="handleCommand(event)">
+                        <p id="command-output" class="terminal-output">1:13:58PM</p>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="music-section">
+                <p class="helper-text" id="track-info" >Title - Author</p>
+                <input type="range" id="progress-slider" class="track-progress" min="0" value="0">
+                <div class="audio-controls tooltip-container" id="volume-control">
+                    <label class="player-container">
+                        <input checked="checked" type="checkbox" id="music-toggle">
+                        <svg viewBox="0 0 320 512" height="16px" xmlns="http://www.w3.org/2000/svg" class="pause-button btn">
+                            <path
+                                d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 384 512" height="16px" xmlns="http://www.w3.org/2000/svg" class="play-button btn">
+                            <path
+                                d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z">
+                            </path>
+                        </svg>
+                    </label>
+                    <span class="tooltip">scroll down/up for music</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    
+    <footer class="page-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Kagami. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

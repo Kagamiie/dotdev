@@ -1,0 +1,334 @@
+@import url("/src/pages/home/home.css");
+@import url("/src/pages/about/about.css");
+@import url("/src/pages/contact/contact.css");
+
+:root {
+    --img-size: 555px;
+    --img-height: 250px;
+    --gap: 5em;
+    --line: 1px;
+    --sh-default: 5px 5px 0 #b3b3b31a, -5px -5px 0 #b3b3b31a;
+    --color: rgba(255, 255, 255, 0.2);
+}
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========== BASE =========== */
+body {
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #131313;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+    tab-size: 4;
+    padding: 1rem;
+}
+
+.background {
+    background-image: linear-gradient(-90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)),
+        linear-gradient(0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap));
+    background-size: var(--gap) var(--gap);
+}
+
+/* LAYOUT */
+.primary-container {
+    border: 2px solid #404044;
+    background-color: #1f1f1f;
+    margin: 2rem 0;
+    box-shadow: var(--sh-default);
+    width: 100%;
+    max-width: var(--img-size);
+    position: relative;
+}
+
+hr {
+    border: 1px solid #404044;
+    margin: 10px 0;
+}
+
+svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* HEADER / PATH */
+.top-section {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.current-path {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3px 20px;
+    background-color: #1f1f1f;
+    border: 2px solid #404044;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+}
+
+/* IMAGE */
+img {
+    border-bottom: 2px solid #404044;
+    width: 100%;
+    height: var(--img-height);
+    object-fit: cover;
+    display: block;
+}
+
+.main-navigation>.navigation-link+.navigation-link {
+    border-top: 2px solid #404044;
+}
+
+.navigation-link {
+    padding: 5px;
+    height: 30px;
+    width: 27px;
+}
+
+/* NAVIGATION */
+.main-navigation {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(-110%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 10px; */
+    /* padding: 7px; */
+    background-color: #1f1f1f;
+    border: 2px solid #404044;
+    color: white;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.main-navigation > a {
+    transition: background-color 0.3s ease;
+}
+
+.main-navigation > a:hover {
+    background-color: #723bf2;
+}
+
+
+/* MUSIC PLAYER */
+.music-section {
+    margin-top: 5px;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.audio-controls {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #404044;
+    background-color: #1f1f1f;
+    padding: 15px 50px;
+    color: white;
+    font-weight: bold;
+    z-index: 5;
+}
+
+#track-selector {
+    width: 100%;
+}
+
+/* PLAY/PAUSE TOGGLE */
+.player-container {
+    --color: #a5a5b0;
+    --size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--size);
+    position: relative;
+    user-select: none;
+    fill: var(--color);
+    cursor: pointer;
+}
+
+.player-container .play-button,
+.player-container .pause-button {
+    position: absolute;
+    animation: keyframes-fill 0.5s;
+}
+
+.player-container .pause-button {
+    display: none;
+}
+
+.player-container input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.player-container input:checked ~ .play-button {
+    display: none;
+}
+
+.player-container input:checked ~ .pause-button {
+    display: block;
+}
+
+@keyframes keyframes-fill {
+    0% {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(-10deg) scale(1.2);
+    }
+}
+
+/* RANGE INPUT STYLING */
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: inherit;
+}
+
+.track-progress {
+    width: 100%;
+    height: 0.5em;
+    margin: 0.25em 0 1em 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.track-progress::-webkit-slider-thumb {
+    width: 0.5em;
+    height: 0.5em;
+    border: 5px solid white;
+    box-shadow: -100vw 0 0 100vw #723bf2;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.track-progress::-webkit-slider-runnable-track {
+    height: 0.5em;
+}
+
+.track-progress::-moz-range-thumb {
+    width: 0.5em;
+    height: 0.5em;
+    border: 1px solid white;
+    box-shadow: -100vw 0 0 100vw #723bf2;
+    border-radius: 0;
+}
+
+/* FOOTER */
+.page-footer {
+    color: #d1d5db;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    margin-top: clamp(2rem, 5vw, 4rem);
+    clear: both;
+    transition: all 0.3s ease;
+}
+
+.page-footer .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    color: rgb(98, 99, 100);
+    cursor: auto;
+    padding: 0 1rem;
+    font-size: clamp(10px, 1.2vw, 14px);
+    transition: all 0.2s ease;
+}
+
+/* SELECTION STYLES */
+::selection {
+    background-color: #723bf256;
+    color: white;
+}
+
+::-moz-selection {
+    background-color: #723bf256;
+    color: white;
+}
+
+/* SELECTION STYLES */
+::selection {
+    background-color: #723bf256;
+    color: white;
+}
+
+::-moz-selection {
+    background-color: #723bf256;
+    color: white;
+}
+
+.tooltip {
+    position: absolute;
+    width: 234px;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.3em 0.6em;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    border: 2px solid #404044;
+    background-color: #1f1f1f;
+    z-index: 100;
+    color: rgb(172, 172, 172);
+}
+
+.tooltip::after {
+    position: absolute;
+    content: "";
+    height: 0.6em;
+    width: 0.6em;
+    bottom: 1.5em;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    background-color: #1f1f1f;
+    /* border: 2px solid #404044; */
+    z-index: -100;
+}
+
+.tooltip-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
