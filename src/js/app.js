@@ -6,7 +6,7 @@ const CONFIG = {
 };
 
 // État global
-const state = {
+const AudioState = {
     playing: false,
     currentTrack: 1,
     audio: null,
@@ -14,11 +14,11 @@ const state = {
 };
 
 function initMusicPlayer() {
-    state.audio = new Audio(`src/media/audio/${CONFIG.audioFiles[state.currentTrack]}`);
-    state.audio.volume = CONFIG.defaultVolume;
+    AudioState.audio = new Audio(`src/media/audio/${CONFIG.audioFiles[AudioState.currentTrack]}`);
+    AudioState.audio.volume = CONFIG.defaultVolume;
 
     // All my HTML elements
-    state.el = {
+    AudioState.el = {
         toggle: document.getElementById("music-toggle"),
         progress: document.getElementById("progress-slider"),
         volume: document.getElementById("volume-control"),
@@ -26,40 +26,59 @@ function initMusicPlayer() {
     };
 
     // Lecture/pause via le toggle
-    state.el.toggle?.addEventListener("change", () => {
-        state.playing = state.el.toggle.checked;
-        state.playing ? state.audio.play() : state.audio.pause();
-        state.el.info.textContent = CONFIG.audioFiles[state.currentTrack];
+    AudioState.el.toggle?.addEventListener("change", () => {
+        AudioState.playing = AudioState.el.toggle.checked;
+        AudioState.playing ? AudioState.audio.play() : AudioState.audio.pause();
+        AudioState.el.info.textContent = CONFIG.audioFiles[AudioState.currentTrack];
     });
 
     // Mise à jour de la barre de progression
-    state.audio.addEventListener("timeupdate", () => {
-        state.el.progress.value = (state.audio.currentTime / state.audio.duration) * 100;
+    AudioState.audio.addEventListener("timeupdate", () => {
+        AudioState.el.progress.value = (AudioState.audio.currentTime / AudioState.audio.duration) * 100;
     });
 
-    state.audio.addEventListener("ended", () => {
-        state.currentTrack++;
-        if (state.currentTrack >= CONFIG.audioFiles.length) {
-            state.currentTrack = 0;
+    AudioState.audio.addEventListener("ended", () => {
+        AudioState.currentTrack++;
+        if (AudioState.currentTrack >= CONFIG.audioFiles.length) {
+            AudioState.currentTrack = 0;
         }
         
-        state.audio.src = `src/media/audio/${CONFIG.audioFiles[state.currentTrack]}`;
-        state.audio.play();
-        state.el.info.textContent = CONFIG.audioFiles[state.currentTrack];
+        AudioState.audio.src = `src/media/audio/${CONFIG.audioFiles[AudioState.currentTrack]}`;
+        AudioState.audio.play();
+        AudioState.el.info.textContent = CONFIG.audioFiles[AudioState.currentTrack];
     });
 
-    // Déplacement manuel dans la piste
-    state.el.progress?.addEventListener("input", () => {
-        state.audio.currentTime = (state.el.progress.value / 100) * state.audio.duration;
+    // Déplacement (manuel) dans la piste
+    AudioState.el.progress?.addEventListener("input", () => {
+        AudioState.audio.currentTime = (AudioState.el.progress.value / 100) * AudioState.audio.duration;
     });
 
     // Réglage du volume à la molette
-    state.el.volume?.addEventListener("wheel", e => {
+    AudioState.el.volume?.addEventListener("wheel", e => {
         e.preventDefault();
         const delta = e.deltaY < 0 ? CONFIG.volumeStep : -CONFIG.volumeStep;
-        state.audio.volume = Math.min(1, Math.max(0, state.audio.volume + delta));
+        AudioState.audio.volume = Math.min(1, Math.max(0, AudioState.audio.volume + delta));
     });
 }
+
+// navigation interne
+const Navigation = {
+    // Initialise les événements de navigation
+    init() {
+        document.querySelectorAll(".navigation-link").forEach(link =>
+            link.addEventListener("click", async e => {
+                e.preventDefault();
+                const filePath = link.dataset.page;
+                await PageLoader.load(filePath);
+            })
+        );
+
+        // Gère la navigation arrière/avant du navigateur
+        window.addEventListener("popAudioState", async e =>
+            await PageLoader.load(e.AudioState?.page || "pages/home.html")
+        );
+    }
+};
 
 // Chargement de pages HTML
 const PageLoader = {
@@ -77,42 +96,34 @@ const PageLoader = {
         }
     },
 
-    // Charge la page actuelle en fonction de l’URL (hash)
-    loadCurrent() { // pour passer en command la page au demarage
-        const hash = location.hash.substring(1) || "home";
-        const filePath = document.querySelector(`[data-page*="${hash}"]`)?.dataset.page || "src/pages/home.html";
-        this.load(filePath);
-    }
-};
-
-// navigation interne
-const Navigation = {
-    // Initialise les événements de navigation
-    init() {
-        document.querySelectorAll(".navigation-link").forEach(link =>
-            link.addEventListener("click", async e => {
-                e.preventDefault();
-                const filePath = link.dataset.page;
-                await PageLoader.load(filePath);
-
-                // gere la bar url
-                const page = filePath.split("/").pop().replace(".html", "");
-                history.pushState({ page: filePath }, "", `#${page}`);
+    async fetchRepoData() {
+        await Promise.all(
+            Array.from(document.querySelectorAll("[data-url]")).map(async el => {
+                const res = await fetch(`https://api.github.com/repos/kagamiie/${el.dataset.url}`);
+                const repo = await res.json();
+                const starsEl = el.querySelector("#stars-count");
+                if (starsEl) starsEl.textContent = repo.stargazers_count || 0;
+                console.log(repo.stargazers_count, repo)
             })
         );
+    },
 
-        // Gère la navigation arrière/avant du navigateur
-        window.addEventListener("popstate", async e =>
-            await PageLoader.load(e.state?.page || "pages/home.html")
-        );
+    // Charge la page actuelle en fonction de l’URL (hash)
+    async loadCurrent() {
+        const hash = location.hash.substring(1) || "home";
+        const filePath = document.querySelector(`[data-page*="${hash}"]`)?.dataset.page || "src/pages/home.html";
+        await this.load(filePath); // attend que load() finisse
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     initMusicPlayer();
     Navigation.init();
-    PageLoader.loadCurrent();
     document.getElementById("music-toggle").checked = false;
+
+    // attendre que la page home/etc.. soit chargée avant fetchRepoData
+    await PageLoader.loadCurrent();
+    await PageLoader.fetchRepoData();
 });
 
 window.addEventListener("load", () => console.log("Page loaded"));

@@ -4,271 +4,260 @@
 
 /* MOBILE (max-width: 320px) */
 @media (max-width: 320px) {
-    .page-footer .footer-container {
-        font-size: 9px;
-        padding: 0 0.5rem;
-    }
+  .page-footer .footer-container {
+    font-size: 9px;
+    padding: 0 0.5rem;
+  }
 }
 
 /* MOBILE (max-width: 480px) */
 @media (max-width: 480px) {
-    /* Variables */
-    :root {
-        --img-size: 100%;
-        --img-height: 200px;
-        --gap: 2em;
-    }
+  /* Variables */
+  :root {
+    --img-size: 100%;
+    --img-height: 200px;
+    --gap: 2em;
+  }
 
-    .pause-button.btn,
-    .play-button.btn{
-        width: 14px!important;
-        height: 14px!important;
-    }
+  /* Buttons */
+  .pause-button.btn,
+  .play-button.btn {
+    width: 14px !important;
+    height: 14px !important;
+  }
 
+  /* Base */
+  body {
+    padding: 0.25rem;
+    min-height: 100vh;
+  }
 
-    /* Base styles */
-    body {
-        padding: 0.25rem;
-        min-height: 100vh;
-    }
+  html,
+  body {
+    overflow-x: hidden;
+  }
 
-    html, body {
-        overflow-x: hidden;
-    }
+  /* Layout */
+  .primary-container {
+    transform: scale(0.9);
+    margin: 0.5rem 0;
+    max-width: 100%;
+  }
 
-    /* Layout */
-    .primary-container {
-        transform: scale(0.9);
-        margin: 0.5rem 0;
-        max-width: 100%;
-    }
+  /* Navigation */
+  .main-navigation {
+    left: 5px;
+    transform: translate(-70%, -50%);
+  }
 
-    /* Navigation */
-    .main-navigation {
-        left: 5px;
-        /* gap: 5px; */
-        /* padding: 4px; */
-    }
+  .main-navigation svg {
+    transform: scale(0.8);
+  }
 
-    .main-navigation svg{
-        transform: scale(0.8);
-    }
+  /* Header */
+  .current-path {
+    padding: 3px 15px;
+    font-size: 12px;
+  }
 
-    .main-navigation{
-        transform: translate(-70%, -50%);
-    }
+  /* Profile */
+  .profile-info h1,
+  .profile-info p,
+  .profile-info .website-link {
+    padding: 10px;
+  }
 
-    /* Header */
-    .current-path {
-        padding: 3px 15px;
-        font-size: 12px;
-    }
+  .profile-info h1 {
+    font-size: 1.5rem;
+  }
 
-    /* Profile */
-    .profile-info p,
-    .profile-info h1,
-    .profile-info .website-link {
-        padding: 10px;
-    }
+  .profile-info .website-link,
+  .profile-info p {
+    font-size: 0.9rem;
+  }
 
-    .profile-info h1 {
-        font-size: 1.5rem;
-    }
+  /* Cards */
+  .card-title {
+    font-size: 14px;
+  }
 
-    .profile-info .website-link {
-        font-size: 0.9rem;
-    }
+  .card-description {
+    font-size: 12px;
+  }
 
-    .profile-info p {
-        font-size: 0.9rem;
-    }
+  .card-title,
+  .card-description,
+  .author-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
 
-    /* Cards */
-    .card-title {
-        font-size: 14px;
-    }
+  .card {
+    min-height: 44px; /* touch target */
+  }
 
-    .card-description {
-        font-size: 12px;
-    }
+  /* Terminal */
+  .terminal-line {
+    padding: 10px;
+  }
 
-    .card-title, .card-description, .author-name {
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
-    }
+  .terminal-prompt {
+    font-size: 18px;
+  }
 
-    /* Touch targets */
-    .card {
-        min-height: 44px;
-    }
+  input {
+    font-size: 12px;
+  }
 
-    /* Terminal */
-    .terminal-line {
-        padding: 10px;
-    }
+  .terminal-output {
+    font-size: 10px;
+  }
 
-    .terminal-prompt {
-        font-size: 18px;
-    }
+  .helper-text {
+    font-size: 12px;
+  }
 
-    input {
-        font-size: 12px;
-    }
+  /* Music player */
+  .music-section {
+    padding: 10px;
+  }
 
-    .terminal-output {
-        font-size: 10px;
-    }
+  .audio-controls {
+    padding: 10px 40px;
+    bottom: -15px;
+  }
 
-    .helper-text {
-        font-size: 12px;
-    }
+  .player-container {
+    --size: 25px;
+  }
 
-    /* Music player */
-    .music-section {
-        padding: 10px;
-    }
-
-    .audio-controls {
-        padding: 10px 40px;
-        bottom: -15px;
-    }
-
-    .player-container {
-        --size: 25px;
-    }
-
-    /* Footer */
-    .page-footer {
-        margin-top: clamp(1.5rem, 6vw, 2.5rem);
-        font-size: clamp(10px, 3vw, 12px);
-    }
+  /* Footer */
+  .page-footer {
+    margin-top: clamp(1.5rem, 6vw, 2.5rem);
+    font-size: clamp(10px, 3vw, 12px);
+  }
 }
 
-/* TABLET (min-width: 481px) and (max-width: 768px) */
+/* TABLET (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-    /* Variables */
-    :root {
-        --img-size: 450px;
-        --img-height: 220px;
-        --gap: 3em;
-    }
+  /* Variables */
+  :root {
+    --img-size: 450px;
+    --img-height: 220px;
+    --gap: 3em;
+  }
 
-    /* Profile */
-    .profile-info p,
-    .profile-info h1,
-    .profile-info .website-link {
-        padding: 15px;
-    }
+  /* Profile */
+  .profile-info h1,
+  .profile-info p,
+  .profile-info .website-link {
+    padding: 15px;
+  }
 
-    /* Navigation */
-    .main-navigation {
-        left: 10px;
-        /* gap: 8px; */
-        padding: 5px;
-    }
+  /* Navigation */
+  .main-navigation {
+    left: 10px;
+    padding: 5px;
+    transform: translate(-85%, -50%);
+  }
 
-    .main-navigation svg{
-        transform: scale(0.8);
-    }
+  .main-navigation svg {
+    transform: scale(0.8);
+  }
 
-    .main-navigation{
-        transform: translate(-85%, -50%);
-    }
-
-    /* Footer */
-    .page-footer {
-        margin-top: clamp(2rem, 4vw, 3rem);
-        font-size: clamp(11px, 2vw, 13px);
-    }
+  /* Footer */
+  .page-footer {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(11px, 2vw, 13px);
+  }
 }
 
-/* GENERAL TABLET AND MOBILE (max-width: 768px) */
+/* GENERAL TABLET + MOBILE (max-width: 768px) */
 @media (max-width: 768px) {
-    body {
-        padding: 0.5rem;
-    }
+  body {
+    padding: 0.5rem;
+  }
 
-    .primary-container {
-        margin: 1rem 0;
-    }
+  .primary-container {
+    margin: 1rem 0;
+  }
 }
 
 /* DESKTOP (min-width: 769px) */
 @media (min-width: 769px) {
-    .project-item {
-        flex-direction: row;
-        gap: 5px;
-    }
+  .project-item {
+    flex-direction: row;
+    gap: 5px;
+  }
 
-    .card {
-        width: 262.5px;
-        max-width: none;
-    }
+  .card {
+    width: 262.5px;
+    max-width: none;
+  }
 }
 
-/* DESKTOP (min-width: 769px) and (max-width: 1023px) */
+/* DESKTOP (769px–1023px) */
 @media (min-width: 769px) and (max-width: 1023px) {
-    .page-footer {
-        margin-top: clamp(2.5rem, 5vw, 4rem);
-        font-size: clamp(12px, 1.5vw, 13px);
-    }
+  .page-footer {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
 }
 
 /* LARGE DESKTOP (min-width: 640px) */
 @media (min-width: 640px) {
-    .download-button {
-        width: fit-content;
-    }
+  .download-button {
+    width: fit-content;
+  }
 
-    .kbd {
-        display: flex;
-    }
+  .kbd {
+    display: flex;
+  }
 }
 
 /* LARGE DESKTOP (min-width: 1024px) */
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
+  .page-footer {
+    position: relative;
+    bottom: -1.25rem;
+}
+}
+
+@media (max-height: 950px) {
     .page-footer {
         position: relative;
-        /* position: fixed; */
-        bottom: .5rem;
-    }
+        bottom: -2.25rem;
+        margin: 0;
+  }
 }
 
-/* LARGE DESKTOP (min-width: 1200px) */
+/* XL DESKTOP (min-width: 1200px) */
 @media (min-width: 1200px) {
-    .page-footer .footer-container {
-        font-size: clamp(12px, 1vw, 16px);
-        padding: 0 clamp(1rem, 2vw, 2rem);
-    }
+  .page-footer .footer-container {
+    font-size: clamp(12px, 1vw, 16px);
+    padding: 0 clamp(1rem, 2vw, 2rem);
+  }
 }
 
-/* EXTRA LARGE DESKTOP (min-width: 1600px) */
+/* XXL DESKTOP (min-width: 1600px) */
 @media (min-width: 1600px) {
-    .page-footer .footer-container {
-        font-size: clamp(13px, 0.8vw, 18px);
-    }
+  .page-footer .footer-container {
+    font-size: clamp(13px, 0.8vw, 18px);
+  }
 }
 
-/* TALL SCREENS (min-height: 900px) */
-@media (min-height: 1050px) {
-    .page-footer {
-        position: fixed;
-        bottom: 2rem;
-    }
+/* HIGH DPI / RETINA */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+  .page-footer .footer-container {
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
 }
 
-/* HIGH DPI / RETINA DISPLAYS */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .page-footer .footer-container {
-        font-weight: 300;
-        letter-spacing: 0.01em;
-    }
-}
-
-/* PRINT STYLES */
+/* PRINT */
 @media print {
-    .page-footer {
-        display: none;
-    }
+  .page-footer {
+    display: none;
+  }
 }

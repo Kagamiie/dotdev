@@ -2,23 +2,59 @@
 @import url("../pages/about/about.css");
 @import url("../pages/contact/contact.css");
 
+/* ========== ROOT VARIABLES ========== */
 :root {
+    /* Background */
+    --color: rgba(255, 255, 255, 0.2);
+    --gap: 5em;
+    
+    /* Colors */
+    --color-bg: #131313;
+    --color-bg-dark: #1f1f1f;
+    --color-border: #404044;
+    --color-accent: #723bf2;
+    --color-accent-light: #708af4;
+    --color-accent-visited: #5735f1;
+    --color-text: #ffffff;
+    --color-text-muted: #d1d5db;
+    --color-tooltip: #acacac;
+    --color-progress-bg: #00000033;
+    --color-selection: #723bf256;
+
+    /* Sizes */
     --img-size: 555px;
     --img-height: 250px;
     --gap: 5em;
     --line: 1px;
+    --nav-icon: 18px;
+    --nav-btn-w: 27px;
+    --nav-btn-h: 30px;
+    --play-size: 30px;
+    --footer-margin: clamp(2rem, 5vw, 4rem);
+    --tooltip-width: 150px;
+
+    /* Spacing */
+    --padding-xs: 0.25rem;
+    --padding-sm: 0.5rem;
+    --padding-md: 1rem;
+    --padding-lg: 2rem;
+
+    /* Shadows & Borders */
     --sh-default: 5px 5px 0 #b3b3b31a, -5px -5px 0 #b3b3b31a;
-    --color: rgba(255, 255, 255, 0.2);
+    --border: 2px solid var(--color-border);
+
+    /* Transitions */
+    --transition: all 0.3s ease;
 }
 
-/* RESET */
+/* ========== RESET ========== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* =========== BASE =========== */
+/* ========== BASE ========== */
 body {
     font-family: 'Space Mono', monospace;
     display: flex;
@@ -27,16 +63,17 @@ body {
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background-color: #131313;
+    background-color: var(--color-bg);
     font-weight: 300;
     font-style: normal;
-    color: white;
+    color: var(--color-text);
     tab-size: 4;
-    padding: 1rem;
+    padding: var(--padding-md);
 }
 
 .background {
-    background-image: linear-gradient(-90deg,
+    background-image: 
+        linear-gradient(-90deg,
             transparent calc(var(--gap) - var(--line)),
             var(--color) calc(var(--gap) - var(--line) + 1px),
             var(--color) var(--gap)),
@@ -47,11 +84,11 @@ body {
     background-size: var(--gap) var(--gap);
 }
 
-/* LAYOUT */
+/* ========== LAYOUT ========== */
 .primary-container {
-    border: 2px solid #404044;
-    background-color: #1f1f1f;
-    margin: 2rem 0;
+    border: var(--border);
+    background-color: var(--color-bg-dark);
+    margin: var(--padding-lg) 0;
     box-shadow: var(--sh-default);
     width: 100%;
     max-width: var(--img-size);
@@ -59,16 +96,17 @@ body {
 }
 
 hr {
-    border: 1px solid #404044;
+    border: 1px solid var(--color-border);
     margin: 10px 0;
 }
 
-svg {
-    width: 18px;
-    height: 18px;
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
-/* HEADER / PATH */
+/* ========== HEADER / PATH ========== */
 .top-section {
     position: relative;
     display: block;
@@ -81,34 +119,34 @@ svg {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 3px 20px;
-    background-color: #1f1f1f;
-    border: 2px solid #404044;
-    color: white;
+    background-color: var(--color-bg-dark);
+    border: var(--border);
+    color: var(--color-text);
     font-weight: bold;
     font-size: 14px;
     z-index: 10;
 }
 
-/* IMAGE */
+/* ========== IMAGE ========== */
 img {
-    border-bottom: 2px solid #404044;
+    border-bottom: var(--border);
     width: 100%;
     height: var(--img-height);
     object-fit: cover;
     display: block;
 }
 
+/* ========== NAVIGATION ========== */
 .main-navigation>.navigation-link+.navigation-link {
-    border-top: 2px solid #404044;
+    border-top: var(--border);
 }
 
 .navigation-link {
     padding: 5px;
-    height: 30px;
-    width: 27px;
+    height: var(--nav-btn-h);
+    width: var(--nav-btn-w);
 }
 
-/* NAVIGATION */
 .main-navigation {
     position: absolute;
     top: 50%;
@@ -118,11 +156,9 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* gap: 10px; */
-    /* padding: 7px; */
-    background-color: #1f1f1f;
-    border: 2px solid #404044;
-    color: white;
+    background-color: var(--color-bg-dark);
+    border: var(--border);
+    color: var(--color-text);
     font-weight: bold;
     z-index: 5;
 }
@@ -132,11 +168,10 @@ img {
 }
 
 .main-navigation > a:hover {
-    background-color: #723bf2;
+    background-color: var(--color-accent);
 }
 
-
-/* MUSIC PLAYER */
+/* ========== MUSIC PLAYER ========== */
 .music-section {
     margin-top: 5px;
     padding: 10px 20px;
@@ -148,22 +183,26 @@ img {
     bottom: -18px;
     left: 50%;
     transform: translateX(-50%);
-    border: 2px solid #404044;
-    background-color: #1f1f1f;
+    border: var(--border);
+    background-color: var(--color-bg-dark);
     padding: 15px 50px;
-    color: white;
+    color: var(--color-text);
     font-weight: bold;
     z-index: 5;
+}
+
+#track-info{
+    color: var(--color-gray-light);
 }
 
 #track-selector {
     width: 100%;
 }
 
-/* PLAY/PAUSE TOGGLE */
+/* ========== PLAY/PAUSE TOGGLE ========== */
 .player-container {
     --color: #a5a5b0;
-    --size: 30px;
+    --size: var(--play-size);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,7 +249,7 @@ img {
     }
 }
 
-/* RANGE INPUT STYLING */
+/* ========== RANGE INPUT STYLING ========== */
 input[type="range"],
 input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-webkit-slider-thumb {
@@ -224,7 +263,7 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%;
     height: 0.5em;
     margin: 0.25em 0 1em 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--color-progress-bg);
     overflow: hidden;
     border-radius: 0;
 }
@@ -232,8 +271,8 @@ input[type="range"]::-webkit-slider-thumb {
 .track-progress::-webkit-slider-thumb {
     width: 0.5em;
     height: 0.5em;
-    border: 5px solid white;
-    box-shadow: -100vw 0 0 100vw #723bf2;
+    border: 5px solid var(--color-text);
+    box-shadow: -100vw 0 0 100vw var(--color-accent);
     border-radius: 0;
     -webkit-appearance: none;
     appearance: none;
@@ -249,81 +288,68 @@ input[type="range"]::-webkit-slider-thumb {
 .track-progress::-moz-range-thumb {
     width: 0.5em;
     height: 0.5em;
-    border: 1px solid white;
-    box-shadow: -100vw 0 0 100vw #723bf2;
+    border: 1px solid var(--color-text);
+    box-shadow: -100vw 0 0 100vw var(--color-accent);
     border-radius: 0;
 }
 
-/* FOOTER */
+/* ========== FOOTER ========== */
 .page-footer {
-    color: #d1d5db;
+    color: var(--color-gray-light);
     text-align: center;
     width: 100%;
     z-index: 1;
-    position: relative;
-    margin-top: clamp(2rem, 5vw, 4rem);
+    position: fixed;
+    bottom: 2rem;
+    margin-top: var(--footer-margin);
     clear: both;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
-.page-footer .footer-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    color: rgb(98, 99, 100);
-    cursor: auto;
-    padding: 0 1rem;
-    font-size: clamp(10px, 1.2vw, 14px);
-    transition: all 0.2s ease;
+.social-links a:not([data-page]) {
+    color: var(--color-accent-light);
 }
 
-/* SELECTION STYLES */
+.social-links a:not([data-page]):visited {
+    color: var(--color-accent-visited);
+}
+
+/* ========== SELECTION STYLES ========== */
 ::selection {
-    background-color: #723bf256;
-    color: white;
+    background-color: var(--color-selection);
+    color: var(--color-text);
 }
-
 ::-moz-selection {
-    background-color: #723bf256;
-    color: white;
+    background-color: var(--color-selection);
+    color: var(--color-text);
 }
 
-/* SELECTION STYLES */
-::selection {
-    background-color: #723bf256;
-    color: white;
-}
-
-::-moz-selection {
-    background-color: #723bf256;
-    color: white;
-}
-
+/* ========== TOOLTIP ========== */
 .tooltip {
     position: absolute;
-    width: 234px;
+    width: var(--tooltip-width);
     top: 45px;
     left: 50%;
     transform: translateX(-50%);
     padding: 0.3em 0.6em;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.3s;
-    border: 2px solid #404044;
-    background-color: #1f1f1f;
+    transition: var(--transition);
+    border: var(--border);
+    background-color: var(--color-bg-dark);
     z-index: 100;
-    color: rgb(172, 172, 172);
+    color: var(--color-tooltip);
 }
 
 .tooltip::after {
     position: absolute;
     content: "";
-    height: 0.6em;
-    width: 0.6em;
-    bottom: 1.5em;
+    height: .6em;
+    width: .6em;
+    bottom: 2.7em;
     left: 50%;
     transform: translate(-50%) rotate(45deg);
-    background-color: #1f1f1f;
-    /* border: 2px solid #404044; */
+    background-color: var(--color-bg-dark);
     z-index: -100;
 }
 
