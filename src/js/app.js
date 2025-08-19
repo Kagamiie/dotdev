@@ -6,6 +6,7 @@ const CONFIG = {
 };
 
 // État global
+const starsCache = {};
 const AudioState = {
     playing: false,
     currentTrack: 1,
@@ -91,23 +92,38 @@ const PageLoader = {
             const html = await (await fetch(filePath)).text();
             main.innerHTML = new DOMParser().parseFromString(html, "text/html").body.innerHTML;
             path.textContent = `~ / ${filePath.split("/").pop().replace(".html", "")}`;
+
+            this.updateStarsOnPage();
         } catch {
             main.innerHTML = `<div class="error">Error loading ${filePath}</div>`;
         }
     },
 
     async fetchRepoData() {
+        const elements = document.querySelectorAll("[data-url]");
         await Promise.all(
-            Array.from(document.querySelectorAll("[data-url]")).map(async el => {
-                const res = await fetch(`https://api.github.com/repos/kagamiie/${el.dataset.url}`);
-                const repo = await res.json();
+            Array.from(elements).map(async el => {
+                const repo = el.dataset.url;
+                if (!starsCache[repo]) {
+                    const res = await fetch(`https://api.github.com/repos/kagamiie/${repo}`);
+                    const data = await res.json();
+                    starsCache[repo] = data.stargazers_count || 0;
+                }
                 const starsEl = el.querySelector("#stars-count");
-                if (starsEl) starsEl.textContent = repo.stargazers_count || 0;
-                console.log(repo.stargazers_count, repo)
-            })
-        );
+                if (starsEl) starsEl.textContent = starsCache[repo];
+            }
+        ));
     },
 
+    updateStarsOnPage() {
+        document.querySelectorAll("[data-url]").forEach(el => {
+            const repo = el.dataset.url;
+            const starsEl = el.querySelector("#stars-count");
+            if (starsEl && starsCache[repo] !== undefined) starsEl.textContent = starsCache[repo];
+
+        });
+    },
+    
     // Charge la page actuelle en fonction de l’URL (hash)
     async loadCurrent() {
         const hash = location.hash.substring(1) || "home";
