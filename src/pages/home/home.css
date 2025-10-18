@@ -51,6 +51,13 @@
     color: var(--color-gray-medium) !important;
 }
 
+.nixos{
+    width: initial;
+    border: none!important;
+    height: initial;
+    margin: 10px 0 0 0;
+}
+
 /* ==================== PROJECTS & CARDS ==================== */
 .project-item {
     display: flex;
